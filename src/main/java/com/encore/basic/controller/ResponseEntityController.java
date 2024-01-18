@@ -101,4 +101,9 @@ public class ResponseEntityController {
         Member member = new Member("kim", "kim@naver.com", "1234");
         return ResponseEntity.status(HttpStatus.CREATED).body(member);
     }
+    @GetMapping("chaning4")
+    public ResponseEntity<Member> chaning4(){
+        Member member = new Member("kim", "kim@naver.com", "1234");
+        return ResponseEntity.badRequest().body(member);
+    }
 }
