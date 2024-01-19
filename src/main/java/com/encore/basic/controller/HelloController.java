@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Controller //http 통신을 쉽게 하게 해주는 어노테이션
@@ -128,4 +130,35 @@ public class HelloController {
         System.out.println(hello);
         return "ok";
     }
+
+
+    //서블릿 객체에서 직접적으로 값을 꺼내는 방법 -> 로그인 시 많이 쓰임
+    @PostMapping("httpservlet")
+    @ResponseBody
+    public String httpServletTest(HttpServletRequest req){
+
+        //HttpServletRequest객체에서 header정보 추출
+        System.out.println(req.getContentType());
+        System.out.println(req.getMethod());
+
+        //로그인(auth)정보에서 필요한 정보값을 추출할 때 많이 사용한다.
+        System.out.println(req.getSession());
+
+        System.out.println(req.getHeader("Accept"));
+
+        //HttpServletRequest객체에서 body정보 추출
+        System.out.println(req.getParameter("test1"));
+        System.out.println(req.getParameter("test2"));
+
+        //req.getReader() 를 통해 BufferedReader로 받아 직접 파싱
+
+        return "ok";
+    }
+
+
+//    @GetMapping("/hello-servlet-jsp-get")
+//    public String helloServletJspGet(Model model){
+//        model.addAttribute("myData", "jsp test data");
+//        return "hello-jsp";
+//    }
 }

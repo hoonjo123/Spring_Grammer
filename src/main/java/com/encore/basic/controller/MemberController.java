@@ -46,10 +46,10 @@ public class MemberController {
     }
 
     //회원가입
-    @GetMapping("members/create")
-    public String createMember(){
-        return "member/member-create-screen";
-    }
+//    @GetMapping("members/create")
+//    public String createMember(){
+//        return "member/member-create-screen";
+//    }
 
     @PostMapping("members/create")
     public String create(MemberRequestDto memberRequestDto){

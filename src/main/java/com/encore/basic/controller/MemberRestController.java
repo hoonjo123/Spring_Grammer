@@ -33,7 +33,7 @@ public class MemberRestController {
 
     //회원가입
 
-    @GetMapping("members/create")
+    @PostMapping("members/create")
     public String memberCreate(@RequestBody MemberRequestDto memberRequestDto){
         memberService.createMember(memberRequestDto);
         return "ok";
@@ -48,6 +48,11 @@ public class MemberRestController {
             e.printStackTrace();
             return ResponseEntityController.errorResponseMessage(HttpStatus.NOT_FOUND,e.getMessage());// or another custom method for NOT_FOUND
         }
+    }
+
+    @GetMapping("/home")
+    public String home(){
+        return "member/header";
     }
 
 
